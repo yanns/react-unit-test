@@ -17,6 +17,8 @@ var paths = {
     target: './target'
 };
 
+var libs = ['react'];
+
 gulp.task('clean', function() {
     gulp.src(paths.dest + '/*.js', {read: false})
         .pipe(clean());
@@ -25,28 +27,29 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
-gulp.task('scripts', function() {
-
+gulp.task('js', function() {
     // package our application
-    gulp.src([paths.src + '/main/app/main.js'])
+    return gulp.src(paths.src + '/main/app/main.js')
         .pipe(browserify({
-            debug: gutil.env.type !== 'production',
+            debug: gutil.env.production,
             transform: ['reactify'],
 
             // do not concat react in our javascript, let it external
-            // it means that the react javascript must be included in the html
-            // with the same version as the react dependency in package.json
-            external: ['react']
+            external: libs
         }))
-        .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
+        .pipe(gutil.env.production ? uglify() : gutil.noop())
         .pipe(concat(pkg.name + '.min.js'))
         .pipe(gulp.dest(paths.dest));
-
-    // copy libs (react...)
-    gulp.src([paths.src + '/main/libs/*'])
-        .pipe(changed(paths.dest))
-        .pipe(gulp.dest(paths.dest));
 });
+
+gulp.task('lib', function () {
+  return gulp.src(paths.src + '/main/libs/react.js', { read: false })
+             .pipe(browserify({ require: libs }))
+             .pipe(gutil.env.production ? uglify() : gutil.noop())
+             .pipe(gulp.dest(paths.dest));
+});
+
+gulp.task('build', ['js', 'lib']);
 
 gulp.task('test', function () {
     // in test, do not use browserify as we already defined node modules
@@ -70,7 +73,11 @@ gulp.task('test', function () {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(paths.src + '/**/*.js', ['test', 'scripts']);
+    gulp.watch([
+        paths.src + '/main/app/**/*.js',
+        paths.src + '/test/**/*.js',
+    ], ['test', 'js']);
+    gulp.watch(paths.src + '/main/libs/**/*.js', ['lib']);
 });
 
-gulp.task('default', ['scripts', 'test', 'watch']);
+gulp.task('default', ['js', 'lib', 'test', 'watch']);

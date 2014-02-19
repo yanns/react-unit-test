@@ -28,7 +28,7 @@ npm install -D
 ### only build
 
 ```
-./node_modules/.bin/gulp scripts
+./node_modules/.bin/gulp build
 ```
 
 ### only test
@@ -37,10 +37,10 @@ npm install -D
 ./node_modules/.bin/gulp test
 ```
 
-### build for production (does not work yet)
+### build for production
 
 ```
-./node_modules/.bin/gulp scripts --production
+./node_modules/.bin/gulp build --production
 ```
 
 ### clean
