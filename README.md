@@ -42,3 +42,8 @@ npm install -D
 ```
 ./node_modules/.bin/gulp scripts --production
 ```
+
+### clean
+```
+./node_modules/.bin/gulp clean
+```

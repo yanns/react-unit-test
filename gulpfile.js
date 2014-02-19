@@ -6,6 +6,7 @@ var pkg = require('./package.json');
 var changed = require('gulp-changed');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
+var clean = require('gulp-clean');
 
 var react = require('gulp-react');
 var mocha = require('gulp-mocha');
@@ -15,6 +16,14 @@ var paths = {
     dest: './public',
     target: './target'
 };
+
+gulp.task('clean', function() {
+    gulp.src(paths.dest + '/*.js', {read: false})
+        .pipe(clean());
+
+    gulp.src(paths.target, {read: false})
+        .pipe(clean());
+});
 
 gulp.task('scripts', function() {
 
