@@ -31,14 +31,13 @@ gulp.task('scripts', function() {
     gulp.src([paths.src + '/main/app/main.js'])
         .pipe(browserify({
             debug: gutil.env.type !== 'production',
-            transform: ['reactify']
-        }))
-        .on('prebundle', function(bundle) {
+            transform: ['reactify'],
+
             // do not concat react in our javascript, let it external
             // it means that the react javascript must be included in the html
             // with the same version as the react dependency in package.json
-            bundle.external('react:');
-        })
+            external: ['react']
+        }))
         .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
         .pipe(concat(pkg.name + '.min.js'))
         .pipe(gulp.dest(paths.dest));
