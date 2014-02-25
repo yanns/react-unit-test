@@ -23,14 +23,12 @@ describe("Label Test", function() {
 	});
 
     it("Check Text Assignment", function() {
-    	var label = <Label>Some Text We Need for Test</Label>;
-    	ReactTestUtils.renderIntoDocument(label);
+    	var label = ReactTestUtils.renderIntoDocument(<Label>Some Text We Need for Test</Label>);
     	assert.equal(label.refs.p.props.children, "Some Text We Need for Test");
     });
 
     it("Click", function () {
-        var label = <Label>Some Text We Need to Test</Label>;
-        ReactTestUtils.renderIntoDocument(label);
+    	var label = ReactTestUtils.renderIntoDocument(<Label>Some Text We Need to Test</Label>);
 
         ReactTestUtils.Simulate.click(label.refs.p);
         assert.equal(label.refs.p.props.children, "Text After Click");
