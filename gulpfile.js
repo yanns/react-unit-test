@@ -80,4 +80,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.src + '/main/libs/**/*.js', ['lib']);
 });
 
-gulp.task('default', ['js', 'lib', 'test', 'watch']);
+gulp.task('default', ['build', 'test', 'watch']);
