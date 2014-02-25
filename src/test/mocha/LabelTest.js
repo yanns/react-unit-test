@@ -4,7 +4,6 @@ var React  = require("react/addons"),
 	ReactTestUtils = React.addons.TestUtils;
 var Label = require("../../main/app/Label");
 var assert = require("assert");
-var cheerio = require('cheerio');
 var jsdom = require('jsdom').jsdom;
 
 global.initDOM = function () {
@@ -13,13 +12,23 @@ global.initDOM = function () {
 	global.window = jsdom.jsdom().createWindow('<html><body></body></html>');
 	global.document = window.document;
     global.navigator = window.navigator;
-	global.addEventListener = window.addEventListener
+}
+
+global.cleanDOM = function() {
+	console.log("clean test dom");
+	delete global.window;
+	delete global.document;
+	delete global.navigator;
 }
 
 describe("Label Test", function() {
 
 	beforeEach(function() {
 		initDOM();
+	});
+
+	afterEach(function() {
+		cleanDOM();
 	});
 
     it("Check Text Assignment", function() {
