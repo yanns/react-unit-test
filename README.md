@@ -12,6 +12,7 @@ The build is based on:
   - [browserify](http://browserify.org/), to write nodejs modules that can be used in the browser
   - [mocha](http://visionmedia.github.io/mocha/), for unit tests
   - [cheerio](http://matthewmueller.github.io/cheerio/) to analyse the produced HTML in the tests
+  - [jsdom](https://github.com/tmpvar/jsdom), for testing DOM
 
 
 ### install node modules
