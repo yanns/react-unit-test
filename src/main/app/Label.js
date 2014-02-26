@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React  = require("react");
-var StreamItem = require("./StreamItem");
 
 // copy from http://myshareoftech.com/2013/12/unit-testing-react-dot-js-with-jasmine-and-karma.html
 
