@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "ReactJS sample app",
   "devDependencies": {
-    "gulp": "~3.5.2",
-    "gulp-filter": "~0.3.0",
+    "gulp": "~3.6.0",
+    "gulp-filter": "~0.3.1",
     "react": "^0.10.0",
     "gulp-react": "^0.3.1",
     "gulp-mocha": "~0.4.1",
