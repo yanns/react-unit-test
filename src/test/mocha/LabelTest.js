@@ -39,7 +39,7 @@ describe("Label Test", function() {
     it("Click", function () {
     	var label = ReactTestUtils.renderIntoDocument(<Label>Some Text We Need to Test</Label>);
 
-        ReactTestUtils.Simulate.click(label.refs.p);
+        ReactTestUtils.Simulate.click(label.refs.p.getDOMNode());
         assert.equal(label.refs.p.props.children, "Text After Click");
     });
 });
