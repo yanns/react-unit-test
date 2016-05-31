@@ -1,6 +1,8 @@
 react-unit-test
 ===============
 
+**This repository is outdated - I do not use it nor maintain it anymore**
+
 Sample configuration to unit test a [ReactJS](http://facebook.github.io/react/) application.
 
 The unit tests run in nodejs, without any browser.
