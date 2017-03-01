@@ -12,7 +12,7 @@ The build is based on:
   - [nodejs](http://nodejs.org/) / [npm](https://www.npmjs.org/)
   - [gulp](https://github.com/gulpjs/gulp)
   - [browserify](http://browserify.org/), to write nodejs modules that can be used in the browser
-  - [mocha](http://visionmedia.github.io/mocha/), for unit tests
+  - [mocha](http://mochajs.org/), for unit tests
   - [cheerio](http://matthewmueller.github.io/cheerio/) to analyse the produced HTML in the tests
   - [jsdom](https://github.com/tmpvar/jsdom), for testing DOM
 
